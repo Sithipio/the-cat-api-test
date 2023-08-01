@@ -1,0 +1,32 @@
+.cat {
+  margin: 40px;
+
+  &__form {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 40px 20px;
+
+    &__checkbox {
+      margin: 0 10px 16px;
+    }
+
+    mat-form-field {
+      margin: 0 10px;
+    }
+  }
+
+  &__container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-gap: 40px;
+    justify-items: center;
+  }
+
+  &__card {
+    width: 100%;
+    height: fit-content;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+}

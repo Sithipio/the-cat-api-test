@@ -1,0 +1,26 @@
+<section class="cat">
+  <form class="cat__form" [formGroup]="catForm">
+    <mat-form-field>
+      <mat-label>Limit of cats:</mat-label>
+      <input matInput type="number" formControlName="limit">
+      <mat-error *ngIf="catForm.get('limit').hasError('max')">
+        Limit cannot exceed 100 catty 😿
+      </mat-error>
+    </mat-form-field>
+
+    <mat-checkbox class="cat__form__checkbox" color="primary" formControlName="hasBreed">Has breeds</mat-checkbox>
+
+    <mat-form-field *ngIf="hasBreed">
+      <mat-label>Breed</mat-label>
+      <mat-select formControlName="breedIds" multiple>
+        <mat-option *ngFor="let breed of breeds$ |async" [value]="breed.id">{{breed.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+
+  <div class="cat__container">
+    <mat-card class="cat__card" *ngFor="let cat of cats$ | async; trackBy: trackBy">
+      <img mat-card-image class="cat__image" [src]="cat.url" alt="{{ cat.id }}">
+    </mat-card>
+  </div>
+</section>
